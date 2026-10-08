@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Art Kids in Politics — A student podcast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#141211;--bg2:#1c1917;--ink:#ece4d3;--mute:#a79c8a;--brown:#6b5545;--wine:#8a3342;--moss:#3f5e4b;--line:rgba(236,228,211,.16);
+--serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;--sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#141211}}
+*,*:before,*:after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.02;margin:0;letter-spacing:-.01em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.eyebrow{font:600 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+.eyebrow.w{color:#d49aa4}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:rgba(20,18,17,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo{font:600 19px/1 var(--serif);text-decoration:none;letter-spacing:.14em;text-transform:uppercase}
+.logo i{color:#d49aa4;font-style:normal}
+nav{display:flex;gap:22px;overflow-x:auto}
+nav a{font:500 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--mute);padding:6px 0;border-bottom:1px solid transparent;white-space:nowrap}
+nav a:hover,nav a.on{color:var(--ink);border-color:var(--wine)}
+.btn{display:inline-block;font:600 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;padding:16px 26px;border:1px solid var(--ink);cursor:pointer;background:none;color:var(--ink)}
+.btn.fill{background:var(--ink);color:var(--bg)}
+.btn.wine{background:var(--wine);border-color:var(--wine)}
+.btn:hover{opacity:.85}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+section{padding:84px 0;border-top:1px solid var(--line)}
+.hero{border:0;padding:96px 0 80px}
+.hero h1{font-size:clamp(52px,12vw,150px);text-transform:uppercase;letter-spacing:-.02em;margin:22px 0}
+.hero h1 em{font-style:italic;text-transform:none;color:#d49aa4}
+.tag{font:italic 400 clamp(22px,3.4vw,32px)/1.3 var(--serif);max-width:640px}
+.intro{max-width:520px;color:var(--mute);margin-top:18px}
+.sh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:40px;gap:16px;flex-wrap:wrap}
+.sh h2{font-size:clamp(34px,5vw,56px);text-transform:uppercase}
+.sh a{font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.latest{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;align-items:center}
+.num{font:italic 500 clamp(110px,22vw,260px)/.8 var(--serif);color:var(--wine);opacity:.9}
+.latest h3{font-size:clamp(30px,4.4vw,48px);margin:14px 0 18px}
+.meta{font-size:13px;color:var(--mute);letter-spacing:.04em}
+.about2{display:grid;grid-template-columns:1fr 1.4fr;gap:48px}
+.about2 p,.prose p{color:#cfc6b4;margin:0 0 18px;font-size:17px}
+.pull{font:italic 500 clamp(26px,3.6vw,38px)/1.2 var(--serif);border-left:2px solid var(--moss);padding-left:22px}
+.row{display:grid;grid-template-columns:90px 1fr auto;gap:24px;padding:28px 0;border-top:1px solid var(--line);text-decoration:none;align-items:start}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row .n{font:italic 500 54px/.9 var(--serif);color:var(--brown)}
+.row h3{font-size:clamp(24px,3vw,34px);transition:color .2s}
+.row:hover h3{color:#d49aa4}
+.row p{margin:8px 0 0;color:var(--mute);max-width:620px;font-size:15px}
+.row .meta{text-align:right;min-width:110px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:11px 16px;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;text-decoration:none}
+.chip:hover,.chip.on{background:var(--moss);border-color:var(--moss)}
+.topics{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line)}
+.topics a{padding:34px 18px 34px 0;text-decoration:none;border-right:1px solid var(--line);padding-left:18px}
+.topics a:first-child{padding-left:0}.topics a:last-child{border:0}
+.topics h3{font-size:34px;font-style:italic}.topics a:hover h3{color:#d49aa4}
+.topics span{font-size:13px;color:var(--mute)}
+.hosts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px}
+.arch{aspect-ratio:3/4;border-radius:999px 999px 0 0;background:linear-gradient(180deg,var(--bg2),var(--brown));display:flex;align-items:flex-end;justify-content:center;font:italic 500 90px/1 var(--serif);color:rgba(236,228,211,.35);overflow:hidden;margin-bottom:20px}
+.arch img{width:100%;height:100%;object-fit:cover}
+.hosts h3{font-size:32px}.role{margin:6px 0 12px}
+.hosts p{color:var(--mute);font-size:15px;margin:0}
+.hostlist .arch{max-width:300px}
+.hostlist .h{display:grid;grid-template-columns:300px 1fr;gap:48px;padding:48px 0;border-top:1px solid var(--line);align-items:end}
+.page-h{padding:72px 0 40px}.page-h h1{font-size:clamp(46px,9vw,110px);text-transform:uppercase}
+.ep-h h1{font-size:clamp(38px,7vw,88px);margin:18px 0 24px;max-width:900px}
+.player{border:1px solid var(--line);padding:22px;margin:32px 0;background:var(--bg2)}
+.player audio{width:100%;margin-top:14px}
+.ep-cols{display:grid;grid-template-columns:1.8fr 1fr;gap:64px}
+.transcript{border-top:1px solid var(--line);padding-top:28px}
+.transcript p{max-width:640px;color:#d8cfbd;font-size:18px}
+.transcript b{display:block;font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#d49aa4;margin:26px 0 8px}
+.side h4{font:600 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--mute);margin:0 0 14px}
+.side>div{margin-bottom:36px}
+.ph{color:var(--mute);font-size:13px;font-style:italic}
+footer{border-top:1px solid var(--line);padding:56px 0 48px;background:var(--bg2)}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;font-size:14px;color:var(--mute)}
+.fgrid h5{font:600 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin:0 0 14px}
+.fgrid a{display:block;text-decoration:none;padding:3px 0}.fgrid a:hover{color:var(--ink)}
+:focus-visible{outline:2px solid #d49aa4;outline-offset:3px}
+/* episode artwork: only appears when an episode has artwork uploaded */
+.art{display:block;width:100%;height:auto;border:1px solid var(--line)}
+@media(max-width:760px){
+.latest,.about2,.ep-cols,.hostlist .h{grid-template-columns:1fr;gap:28px}
+.topics{grid-template-columns:1fr 1fr}.topics a{border-bottom:1px solid var(--line);padding-left:0}
+.row{grid-template-columns:56px 1fr}.row .n{font-size:38px}.row .meta{grid-column:2;text-align:left}
+.fgrid{grid-template-columns:1fr 1fr}.nav{flex-direction:column;height:auto;padding:12px 0;gap:10px}
+section{padding:56px 0}.hero{padding:56px 0}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="#/">Art Kids <i>in</i> Politics</a>
+<nav id="nav"><a href="#/" data-p="home">Home</a><a href="#/episodes" data-p="episodes">Episodes</a><a href="#/about" data-p="about">About</a><a href="#/hosts" data-p="hosts">Hosts</a></nav>
+</div></header>
+<main id="app"></main>
+<footer><div class="wrap fgrid" id="foot"></div></footer>
+
+<script>
+/* =====================================================================
+   All content now lives in /content/*.json and is edited from /admin.
+   You never need to touch this file.
+   ===================================================================== */
+let SHOW = {links:{}}, TOPICS = {}, HOSTS = [], EPISODES = [], PG = {};
+
+const $ = s => document.querySelector(s), app = $('#app');
+const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const lnk = u => esc(u||'#');
+const slugify = s => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+const fmt = d => new Date(String(d).slice(0,10)+'T12:00:00').toLocaleDateString('en-ZA',{day:'numeric',month:'long',year:'numeric'});
+const parseT = t => String(t||'').split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean).map(p=>{const m=p.match(/^([^:\n]{1,40}):\s*([\s\S]+)$/);return m?[m[1],m[2]]:['',p]});
+
+const btns = e => { const l = e.listen||SHOW.links.spotify; return `<div class="btns">${l&&l!=='#'?`<a class="btn fill" href="${lnk(l)}">Listen now</a>`:''}${e.watch?`<a class="btn" href="${lnk(e.watch)}">Watch</a>`:''}</div>`; };
+const row = e => `<a class="row" href="#/episode/${e.slug}"><div class="n">${e.n}</div><div><div class="eyebrow">${e.topics.map(esc).join(' · ')}</div><h3 style="margin-top:10px">${esc(e.title)}</h3><p>${esc(e.desc)}</p></div><div class="meta">${fmt(e.date)}<br>${e.people.map(esc).join(', ')}</div></a>`;
+const host = h => `<div><div class="arch">${h.photo?`<img src="${esc(h.photo)}" alt="${esc(h.name)}">`:esc((h.name||'?')[0])}</div><h3>${esc(h.name)}</h3><div class="eyebrow role">${esc(h.role)}</div><p>${esc(h.bio)}</p></div>`;
+const topicLinks = () => Object.keys(TOPICS).map(t=>`<a href="#/episodes/${t}"><h3>${esc(t)}</h3><span>${esc(TOPICS[t])}</span></a>`).join('');
+
+function home(){
+  const l = EPISODES[0];
+  const latest = l ? `<section><div class="wrap"><div class="latest">${l.artwork?`<img class="art" src="${esc(l.artwork)}" alt="${esc(l.title)}">`:`<div class="num">${l.n}</div>`}<div>
+  <div class="eyebrow w">Latest episode</div><h3>${esc(l.full)}</h3><p>${esc(l.desc)}</p>
+  <div class="meta">${fmt(l.date)} &nbsp;·&nbsp; ${l.people.map(esc).join(', ')}</div>${btns(l)}
+  <div class="btns" style="margin-top:12px"><a class="chip" href="#/episode/${l.slug}">Read transcript →</a></div></div></div></div></section>` : '';
+  return `<div class="wrap hero"><div class="eyebrow">A student podcast</div>
+  <h1>Art Kids <em>in</em> Politics</h1><div class="tag">${esc(SHOW.tagline)}</div><p class="intro">${esc(SHOW.intro)}</p>
+  <div class="btns"><a class="btn fill" href="${lnk(SHOW.links.spotify)}">Listen now</a><a class="btn" href="${lnk(SHOW.links.youtube)}">Watch</a></div></div>
+  ${latest}
+  <section><div class="wrap about2"><div><div class="eyebrow">About the podcast</div><h2 style="font-size:44px;margin-top:16px">${esc(PG.homeAboutHeading)} <i>${esc(PG.homeAboutItalic)}</i></h2></div>
+  <div class="prose"><p>${esc(PG.homeAboutP1)}</p><p>${esc(PG.homeAboutP2)}</p><a class="chip" href="#/about">Read more</a></div></div></section>
+  <section><div class="wrap"><div class="sh"><h2>Explore episodes</h2><a href="#/episodes">All episodes →</a></div>${EPISODES.slice(0,4).map(row).join('')}</div></section>
+  <section><div class="wrap"><div class="sh"><h2>Topics</h2></div><div class="topics">${topicLinks()}</div></div></section>
+  <section><div class="wrap"><div class="sh"><h2>Meet the hosts</h2><a href="#/hosts">Full profiles →</a></div><div class="hosts">${HOSTS.map(host).join('')}</div></div></section>`;
+}
+function episodes(topic){
+  const list = topic ? EPISODES.filter(e=>e.topics.includes(topic)) : EPISODES;
+  return `<div class="wrap page-h"><div class="eyebrow">The archive</div><h1>Episodes</h1></div>
+  <div class="wrap" style="padding-bottom:84px"><div class="chips" style="margin-bottom:36px"><a class="chip ${topic?'':'on'}" href="#/episodes">All</a>${Object.keys(TOPICS).map(t=>`<a class="chip ${t===topic?'on':''}" href="#/episodes/${t}">${esc(t)}</a>`).join('')}</div>
+  ${list.length?list.map(row).join(''):'<p class="ph">No episodes on this topic yet.</p>'}</div>`;
+}
+function episode(slug){
+  const e = EPISODES.find(x=>x.slug===slug); if(!e) return episodes();
+  const rel = EPISODES.filter(x=>x!==e && x.topics.some(t=>e.topics.includes(t))).slice(0,3);
+  return `<div class="wrap page-h ep-h"><a class="eyebrow" href="#/episodes">← All episodes</a><div class="eyebrow w" style="margin-top:28px">Episode ${e.n} · ${fmt(e.date)}</div><h1>${esc(e.full)}</h1>
+  <div class="tag" style="font-size:24px;max-width:680px">${esc(e.desc)}</div></div>
+  <div class="wrap" style="padding-bottom:84px"><div class="player"><div class="eyebrow">Listen</div>
+  ${e.audio?`<audio controls src="${esc(e.audio)}"></audio>`:'<p class="ph" style="margin:12px 0 0">Audio coming soon. Use the listen button below.</p>'}
+  ${btns(e)}</div>
+  <div class="ep-cols"><div class="transcript"><div class="eyebrow">Transcript</div>${e.transcript.length?e.transcript.map(t=>`${t[0]?`<b>${esc(t[0])}</b>`:''}<p>${esc(t[1]).replace(/\n/g,'<br>')}</p>`).join(''):'<p class="ph">Transcript coming soon.</p>'}</div>
+  <aside class="side">${e.artwork?`<div><img class="art" src="${esc(e.artwork)}" alt="${esc(e.title)}"></div>`:''}<div><h4>In conversation</h4>${e.people.map(esc).join('<br>')}</div>
+  <div><h4>Topics</h4><div class="chips">${e.topics.map(t=>`<a class="chip" href="#/episodes/${esc(t)}">${esc(t)}</a>`).join('')}</div></div>
+  <div><h4>Related episodes</h4>${rel.length?rel.map(r=>`<a href="#/episode/${r.slug}" style="display:block;margin-bottom:14px;font:500 22px/1.15 var(--serif)">${r.n} — ${esc(r.title)}</a>`).join(''):'<span class="ph">More coming soon.</span>'}</div></aside></div></div>`;
+}
+function about(){
+  return `<div class="wrap page-h"><div class="eyebrow">About</div><h1>About</h1></div>
+  <div class="wrap about2" style="padding-bottom:84px"><div class="pull">${esc(PG.aboutPull)}</div>
+  <div class="prose"><div class="eyebrow" style="margin-bottom:12px">What it is</div><p>${esc(PG.aboutWhat)}</p>
+  <div class="eyebrow" style="margin:36px 0 12px">Why we made it</div><p>${esc(PG.aboutWhy)}</p>
+  <div class="eyebrow" style="margin:36px 0 12px">What we talk about</div><p>${esc(PG.aboutTalk)}</p>
+  <div class="eyebrow" style="margin:36px 0 12px">Who it's for</div><p>${esc(PG.aboutFor)}</p>
+  <div class="btns"><a class="btn fill" href="#/episodes">Start listening</a></div></div></div>`;
+}
+function hosts(){
+  return `<div class="wrap page-h"><div class="eyebrow">The people</div><h1>Hosts</h1></div>
+  <div class="wrap hostlist" style="padding-bottom:84px">${HOSTS.map(h=>`<div class="h"><div class="arch">${h.photo?`<img src="${esc(h.photo)}" alt="${esc(h.name)}">`:esc((h.name||'?')[0])}</div><div><h2 style="font-size:56px">${esc(h.name)}</h2><div class="eyebrow" style="margin:12px 0 20px">${esc(h.role)}</div><div class="prose"><p>${esc(h.bio)}</p></div></div></div>`).join('')}</div>`;
+}
+function footer(){
+  const L = SHOW.links;
+  $('#foot').innerHTML = `<div><div class="logo" style="margin-bottom:14px">Art Kids <i>in</i> Politics</div>${esc(SHOW.footerBlurb)}</div>
+  <div><h5>Listen</h5><a href="${lnk(L.spotify)}">Spotify</a><a href="${lnk(L.apple)}">Apple Podcasts</a><a href="${lnk(L.youtube)}">YouTube</a></div>
+  <div><h5>Follow</h5><a href="${lnk(L.instagram)}">Instagram</a><a href="${lnk(L.tiktok)}">TikTok</a><a href="${lnk(L.x)}">X / Twitter</a></div>
+  <div><h5>Contact</h5><a href="mailto:${esc(SHOW.email)}">${esc(SHOW.email)}</a></div>`;
+}
+function route(){
+  const [p,a] = location.hash.replace('#/','').split('/');
+  const page = p==='episodes'?episodes(a?decodeURIComponent(a):''):p==='episode'?episode(a):p==='about'?about():p==='hosts'?hosts():home();
+  app.innerHTML = page;
+  document.querySelectorAll('nav a').forEach(x=>x.classList.toggle('on',x.dataset.p===(p==='episode'?'episodes':p||'home')));
+  document.title = (p==='episode'&&EPISODES.find(x=>x.slug===a)?EPISODES.find(x=>x.slug===a).title+' — ':'')+'Art Kids in Politics';
+  scrollTo(0,0);
+}
+
+const J = u => fetch(u,{cache:'no-cache'}).then(r=>{ if(!r.ok) throw new Error(u); return r.json(); });
+Promise.all([J('/content/settings.json'),J('/content/pages.json'),J('/content/hosts.json'),J('/content/episodes.json')]).then(([s,pg,h,ep])=>{
+  SHOW = {tagline:s.tagline,intro:s.intro,footerBlurb:s.footerBlurb,email:s.email,
+    links:{spotify:s.spotify,apple:s.apple,youtube:s.youtube,instagram:s.instagram,tiktok:s.tiktok,x:s.x}};
+  PG = pg; TOPICS = pg.topics||{}; HOSTS = h.hosts||[];
+  const raw = (ep.episodes||[]).filter(e=>e&&e.title&&e.date).map((e,i)=>({...e,_i:i}));
+  raw.sort((a,b)=>String(a.date).localeCompare(String(b.date))||a._i-b._i);
+  const seen = {};
+  raw.forEach((e,i)=>{
+    e.n = String(i+1).padStart(2,'0');
+    let s = slugify(e.title)||('episode-'+e.n); if(seen[s]) s += '-'+e.n; seen[s]=1; e.slug = s;
+    e.full = e.full||e.title; e.desc = e.desc||''; e.people = e.people||[]; e.topics = e.topics||[];
+    e.transcript = parseT(e.transcript);
+  });
+  EPISODES = raw.reverse();
+  footer(); addEventListener('hashchange',route); route();
+}).catch(()=>{ app.innerHTML = '<div class="wrap page-h"><p class="ph">Content could not be loaded. Please refresh.</p></div>'; });
+</script>
+</body>
+</html>

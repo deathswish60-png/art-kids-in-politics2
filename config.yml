@@ -1,0 +1,99 @@
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/YOUR-REPO-NAME   # <- CHANGE THIS (e.g. jane/art-kids-podcast)
+  branch: main
+
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+site_url: https://YOUR-SITE.vercel.app          # <- CHANGE THIS
+display_url: https://YOUR-SITE.vercel.app       # <- CHANGE THIS
+
+collections:
+  - name: episodes
+    label: Podcast Episodes
+    files:
+      - name: episodes
+        label: All Episodes
+        file: content/episodes.json
+        format: json
+        fields:
+          - label: Episodes
+            name: episodes
+            widget: list
+            label_singular: Episode
+            summary: "{{fields.date}} — {{fields.title}}"
+            fields:
+              - { label: Title, name: title, widget: string, hint: "Short title, shown in lists and the episode URL." }
+              - { label: Full title, name: full, widget: string, required: false, hint: "Longer title shown on the episode page. Leave empty to reuse the short title." }
+              - { label: Date, name: date, widget: datetime, date_format: "yyyy-MM-dd", time_format: false, hint: "Episodes are numbered automatically by date: oldest is 01." }
+              - { label: Description, name: desc, widget: text }
+              - { label: Artwork, name: artwork, widget: image, required: false, hint: "Optional. Square images (1400x1400) work best. Leave empty to show the big episode number." }
+              - { label: Listen link (Spotify etc.), name: listen, widget: string, required: false, hint: "Paste the full link to this episode." }
+              - { label: Watch link (YouTube), name: watch, widget: string, required: false }
+              - { label: Audio file link, name: audio, widget: string, required: false, hint: "Optional. A direct .mp3 link to play on the page." }
+              - { label: People in this episode, name: people, widget: list, field: { label: Name, name: name, widget: string }, required: false }
+              - label: Topics
+                name: topics
+                widget: select
+                multiple: true
+                options: [Art, Politics, Youth, Culture, Society]
+              - { label: Transcript, name: transcript, widget: text, required: false, hint: "Start each paragraph with 'Name: ' and leave a blank line between paragraphs." }
+
+  - name: site
+    label: Website Text & Links
+    files:
+      - name: settings
+        label: Home, Social & Listening Links
+        file: content/settings.json
+        format: json
+        fields:
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: Intro, name: intro, widget: text }
+          - { label: Footer blurb, name: footerBlurb, widget: text }
+          - { label: Contact email, name: email, widget: string }
+          - { label: Spotify link, name: spotify, widget: string }
+          - { label: Apple Podcasts link, name: apple, widget: string }
+          - { label: YouTube link, name: youtube, widget: string }
+          - { label: Instagram link, name: instagram, widget: string }
+          - { label: TikTok link, name: tiktok, widget: string }
+          - { label: X / Twitter link, name: x, widget: string }
+      - name: pages
+        label: About Page, Home About & Topics
+        file: content/pages.json
+        format: json
+        fields:
+          - { label: Home about heading, name: homeAboutHeading, widget: string }
+          - { label: Home about heading (italic part), name: homeAboutItalic, widget: string }
+          - { label: Home about paragraph 1, name: homeAboutP1, widget: text }
+          - { label: Home about paragraph 2, name: homeAboutP2, widget: text }
+          - { label: About page quote, name: aboutPull, widget: text }
+          - { label: About - What it is, name: aboutWhat, widget: text }
+          - { label: About - Why we made it, name: aboutWhy, widget: text }
+          - { label: About - What we talk about, name: aboutTalk, widget: text }
+          - { label: About - Who it's for, name: aboutFor, widget: text }
+          - label: Topic descriptions
+            name: topics
+            widget: object
+            hint: "The five topic names are fixed. You can change their descriptions."
+            fields:
+              - { label: Art, name: Art, widget: string }
+              - { label: Politics, name: Politics, widget: string }
+              - { label: Youth, name: Youth, widget: string }
+              - { label: Culture, name: Culture, widget: string }
+              - { label: Society, name: Society, widget: string }
+      - name: hosts
+        label: Hosts
+        file: content/hosts.json
+        format: json
+        fields:
+          - label: Hosts
+            name: hosts
+            widget: list
+            label_singular: Host
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Role, name: role, widget: string }
+              - { label: Photo, name: photo, widget: image, required: false }
+              - { label: Bio, name: bio, widget: text }

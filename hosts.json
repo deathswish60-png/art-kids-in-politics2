@@ -1,0 +1,6 @@
+{
+  "hosts": [
+    { "name": "Host One", "role": "Co-host", "photo": "", "bio": "Replace with a short bio: what they study, what they care about, why they started the show." },
+    { "name": "Host Two", "role": "Co-host", "photo": "", "bio": "Replace with a short bio. Two or three honest sentences work better than a CV." }
+  ]
+}
